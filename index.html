@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Upgrading React Native</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h2>Upgrading React Native</h2>
+					<p>Presented by Oleg Polyakov</p>
+        </section>
+        <section>
+            <h2>Why to upgrade?</h2>
+            <ul style="font-size: 24px">
+                <li>Android 64-bit support</li>
+                <li>Fix devices that have notch with save-area-view</li>
+                <li>Newer versions of your software not compatible with old RN version</li>
+                <li>Deprecated UIs FlatList vs ListView</li>
+                <li>Adding 3rd party libraries that not working with old RN version</li>
+                <li>Performance Improvements</li>
+                <li>New APIs that comes with new OS release</li>
+              </ul>
+          </section>
+        <section>
+          <h4>
+            <a href="https://facebook.github.io/react-native/docs/0.57/upgrading" target="_blank">
+              Official React Native Upgrade Guide
+            </a>
+          </h4>
+          <ul style="list-style: none;font-size: 24px">
+            <li>
+              <a href="https://react-native-community.github.io/rn-diff-purge/" target="_blank">
+                Manual Upgrade Table
+              </a>
+            </li>
+            <li>
+                <a href="https://react-native-community.github.io/upgrade-helper/?from=0.57.8&to=0.59.7" target="_blank">
+                  Upgrade Helper
+                </a>
+              </li>
+          </ul>
+          <aside class="notes">
+						react-native upgrade 0.61.0-rc.0
+					</aside>
+        </section>
+        <section>
+          <h3>iOS Upgrade Gotchas</h3>
+          <ul style="font-size: 24px">
+            <li>The Version of macOs and Xcode </li>
+            <li>AppDelegate.h and AppDelegate.m</li>
+            <li>project.pbxproj</li>
+          </ul>
+        </section>
+        <section>
+          <img src="upgradeOSXcode.jpg" />
+        </section>
+        <section>
+          <img src="downloadSimMenu.jpg" />
+          <img src="downloadSimulators.jpg" />
+        </section>
+        <section>
+          <h3>AppDelegate</h3>
+          <p style="font-size: 24px">
+              A delegate object is an object that gets notified when the object to which it is connected reaches certain events or states.
+              The main purpose of AppDelegate is handling special UIApplication states:
+          </p>
+          <ul style="font-size: 20px">
+            <li>application:supportedInterfaceOrientationsForWindow</li>
+            <li>application:didFinishLaunchingWithOptions</li>
+            <li><a href="https://facebook.github.io/react-native/docs/native-modules-ios.html#dependency-injection"  target="_blank">sourceURLForBridge:</a></li>
+            <li>application:didRegisterUserNotificationSettings</li>
+            <li>application:didRegisterForRemoteNotificationsWithDeviceToken</li>
+            <li>application:didReceiveRemoteNotification</li>
+            <li>application:didFailToRegisterForRemoteNotificationsWithError</li>
+          </ul>
+        </section>
+        <section>
+            <h3>project.pbxproj</h3>
+            <p style="font-size: 24px">
+                project.pbxproj is an important file in the Xcode configuration bundle. 
+                It is responsible for maintaining references to all of the linked files and their groupings, linked frameworks, 
+                and most importantly, the project's build settings.
+            </p>
+            <p>
+              <a href="https://github.com/react-native-community/rn-diff-purge/compare/release/0.57.1..release/0.59.8" target="_blank">
+                Easy to upgrade 0.57.1 to 0.59.8
+              </a>
+            </p>
+            <p>
+              <a href="https://github.com/react-native-community/rn-diff-purge/compare/release/0.57.1..release/0.61.2" target="_blank">
+                Hard Upgrade 0.57.1 to 0.61.2
+              </a>
+            </p>
+          </section>
+        <section>
+          <h3>Android Upgrade Gotchas</h3>
+          <h5>Android App Gotchas</h5>
+          <ul style="font-size: 24px">
+            <li>AndroidManifest.xml</li>
+            <li>MainApplication.java</li>
+          </ul>
+          <h5>Android Build Gotchas</h5>
+          <ul style="font-size: 24px">
+            <li>BUCK</li>
+            <li>build.gradle</li>
+            <li>gradle-wrapper.properties</li>
+            <li>settings.gradle</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Live Demo</h2>
+          <aside class="notes">
+            react-native upgrade 0.61.0-rc.0
+          </aside>
+        </section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
